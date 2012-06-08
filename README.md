@@ -9,14 +9,12 @@ It works just like `UITableView` on iOS. It supports multiple reuse identifiers.
 
 Installation
 ------------
-------------
 
 Just drag and drop the header and implementation file into your project.
 
 If you use the class in a non-ARC project, make sure you add the `-fobjc-arc` compiler flag for the implementation file.
 
 Methods
--------
 -------
 
 Enqueue the object for later use:
@@ -33,14 +31,12 @@ If necessary, call this method to clear the queue:
 
 Protocol
 --------
---------
 
 Make sure you use a custom subclass which conforms to the `ReusableObject` protocol. This method returns the reuse identifier, which you should set when the object gets initialized:
 
     - (NSString *)reuseIdentifier;
 
 Usage
------
 -----
 
 This is an example on how to get a reusable object, in this case a CATransformLayer:
@@ -89,7 +85,6 @@ Make sure that the objects conform to the `ResuableObject` protocol:
 In case you need to clear the queue manually you can call `-clearQueue`. However you should not call the method if you don't have to.
 
 License
--------
 -------
 
 This code is distributed under the terms and conditions of the MIT license. 
