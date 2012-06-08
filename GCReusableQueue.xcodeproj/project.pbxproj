@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		737FDBB31582A26200DC1AF9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 737FDBB21582A26200DC1AF9 /* UIKit.framework */; };
+		737FDBB51582A26200DC1AF9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 737FDBB41582A26200DC1AF9 /* Foundation.framework */; };
+		737FDBB71582A26200DC1AF9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 737FDBB61582A26200DC1AF9 /* CoreGraphics.framework */; };
+		737FDBBD1582A26200DC1AF9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 737FDBBB1582A26200DC1AF9 /* InfoPlist.strings */; };
+		737FDBBF1582A26200DC1AF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 737FDBBE1582A26200DC1AF9 /* main.m */; };
+		737FDBC31582A26200DC1AF9 /* GCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 737FDBC21582A26200DC1AF9 /* GCAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		737FDBAE1582A26200DC1AF9 /* GCReusableQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GCReusableQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		737FDBB21582A26200DC1AF9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		737FDBB41582A26200DC1AF9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		737FDBB61582A26200DC1AF9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		737FDBBA1582A26200DC1AF9 /* GCReusableQueue-Info.plist */ = {isa = PBXFileReference; path = "GCReusableQueue-Info.plist"; sourceTree = "<group>"; };
+		737FDBBC1582A26200DC1AF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		737FDBBE1582A26200DC1AF9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		737FDBC01582A26200DC1AF9 /* GCReusableQueue-Prefix.pch */ = {isa = PBXFileReference; path = "GCReusableQueue-Prefix.pch"; sourceTree = "<group>"; };
+		737FDBC11582A26200DC1AF9 /* GCAppDelegate.h */ = {isa = PBXFileReference; path = GCAppDelegate.h; sourceTree = "<group>"; };
+		737FDBC21582A26200DC1AF9 /* GCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		737FDBAB1582A26200DC1AF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				737FDBB31582A26200DC1AF9 /* UIKit.framework in Frameworks */,
+				737FDBB51582A26200DC1AF9 /* Foundation.framework in Frameworks */,
+				737FDBB71582A26200DC1AF9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		737FDBA31582A26100DC1AF9 = {
+			isa = PBXGroup;
+			children = (
+				737FDBB81582A26200DC1AF9 /* GCReusableQueue */,
+				737FDBB11582A26200DC1AF9 /* Frameworks */,
+				737FDBAF1582A26200DC1AF9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		737FDBAF1582A26200DC1AF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				737FDBAE1582A26200DC1AF9 /* GCReusableQueue.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		737FDBB11582A26200DC1AF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				737FDBB21582A26200DC1AF9 /* UIKit.framework */,
+				737FDBB41582A26200DC1AF9 /* Foundation.framework */,
+				737FDBB61582A26200DC1AF9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		737FDBB81582A26200DC1AF9 /* GCReusableQueue */ = {
+			isa = PBXGroup;
+			children = (
+				737FDBC11582A26200DC1AF9 /* GCAppDelegate.h */,
+				737FDBC21582A26200DC1AF9 /* GCAppDelegate.m */,
+				737FDBB91582A26200DC1AF9 /* Supporting Files */,
+			);
+			path = GCReusableQueue;
+			sourceTree = "<group>";
+		};
+		737FDBB91582A26200DC1AF9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				737FDBBA1582A26200DC1AF9 /* GCReusableQueue-Info.plist */,
+				737FDBBB1582A26200DC1AF9 /* InfoPlist.strings */,
+				737FDBBE1582A26200DC1AF9 /* main.m */,
+				737FDBC01582A26200DC1AF9 /* GCReusableQueue-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		737FDBAD1582A26200DC1AF9 /* GCReusableQueue */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 737FDBC61582A26200DC1AF9 /* Build configuration list for PBXNativeTarget "GCReusableQueue" */;
+			buildPhases = (
+				737FDBAA1582A26200DC1AF9 /* Sources */,
+				737FDBAB1582A26200DC1AF9 /* Frameworks */,
+				737FDBAC1582A26200DC1AF9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GCReusableQueue;
+			productName = GCReusableQueue;
+			productReference = 737FDBAE1582A26200DC1AF9 /* GCReusableQueue.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		737FDBA51582A26100DC1AF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GC;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Dot Square";
+			};
+			buildConfigurationList = 737FDBA81582A26100DC1AF9 /* Build configuration list for PBXProject "GCReusableQueue" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 737FDBA31582A26100DC1AF9;
+			productRefGroup = 737FDBAF1582A26200DC1AF9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				737FDBAD1582A26200DC1AF9 /* GCReusableQueue */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		737FDBAC1582A26200DC1AF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				737FDBBD1582A26200DC1AF9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		737FDBAA1582A26200DC1AF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				737FDBBF1582A26200DC1AF9 /* main.m in Sources */,
+				737FDBC31582A26200DC1AF9 /* GCAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		737FDBBB1582A26200DC1AF9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				737FDBBC1582A26200DC1AF9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		737FDBC41582A26200DC1AF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		737FDBC51582A26200DC1AF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		737FDBC71582A26200DC1AF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GCReusableQueue/GCReusableQueue-Prefix.pch";
+				INFOPLIST_FILE = "GCReusableQueue/GCReusableQueue-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		737FDBC81582A26200DC1AF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GCReusableQueue/GCReusableQueue-Prefix.pch";
+				INFOPLIST_FILE = "GCReusableQueue/GCReusableQueue-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		737FDBA81582A26100DC1AF9 /* Build configuration list for PBXProject "GCReusableQueue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				737FDBC41582A26200DC1AF9 /* Debug */,
+				737FDBC51582A26200DC1AF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		737FDBC61582A26200DC1AF9 /* Build configuration list for PBXNativeTarget "GCReusableQueue" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				737FDBC71582A26200DC1AF9 /* Debug */,
+				737FDBC81582A26200DC1AF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 737FDBA51582A26100DC1AF9 /* Project object */;
+}
