@@ -39,7 +39,7 @@ Make sure you use a custom subclass which conforms to the `ReusableObject` proto
 Usage
 -----
 
-This is an example on how to get a reusable object, in this case a CATransformLayer:
+This is an example on how to get a reusable object, in this case a CATransformLayer subclass:
 
     - (CubeLayer *)pathView:(PathView *)pathView cubeForItemAtIndex:(NSUInteger)index
     {
@@ -89,7 +89,7 @@ License
 
 This code is distributed under the terms and conditions of the MIT license. 
 
-Copyright (c) 2011 Glenn Chiu
+Copyright (c) 2012 Glenn Chiu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
