@@ -102,10 +102,8 @@
 		objects = [NSMutableSet set];
 		[[self reusableObjects] setObject:objects forKey:[obj reuseIdentifier]];
 	}
-	else
-	{
+	
         [objects addObject:obj];
-	}
 }
 
 - (void)clearQueue
