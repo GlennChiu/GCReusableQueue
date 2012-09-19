@@ -43,7 +43,7 @@
     if (self)
     {
         
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE
         
         __weak GCReusableQueue *w_self = self;
         
@@ -51,9 +51,10 @@
                                                                             object:nil 
                                                                              queue:nil 
                                                                         usingBlock:^(NSNotification *note) {
+                                                                            
                                                                             GCReusableQueue *s_self = w_self;
                                                                             
-                                                                            [s_self clearQueue];
+                                                                            if (s_self) [s_self clearQueue];
                                                                         }];
         
 #endif
@@ -69,12 +70,7 @@
 
 - (NSCache *)reusableObjects
 {
-    if (!self->_reusableObjects)
-    {
-        self->_reusableObjects = [NSCache new];
-    }
-    
-    return self->_reusableObjects;
+    return self->_reusableObjects ?: (self->_reusableObjects = [NSCache new]);
 }
 
 - (id <ReusableObject>)dequeueReusableObjectWithIdentifier:(NSString *)identifier
@@ -103,7 +99,7 @@
 		[[self reusableObjects] setObject:objects forKey:[obj reuseIdentifier]];
 	}
 	
-        [objects addObject:obj];
+    [objects addObject:obj];
 }
 
 - (void)clearQueue
