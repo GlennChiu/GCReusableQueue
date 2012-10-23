@@ -75,7 +75,7 @@ When you're done with a certain object (e.g. a view element gets removed from th
         /* Done with the object, enqueue it for later use */
         [_reusableQueue enqueueReusableObject:view];
 
-Make sure that the objects conform to the `ResuableObject` protocol:
+Make sure that the objects conform to the `ReusableObject` protocol:
 
     @interface ViewSubclass : UIView <ReusableObject>  
     {  
