@@ -18,70 +18,70 @@ Methods
 -------
 
 Enqueue the object for later use:
-
-    - (void)enqueueReusableObject:(id <ReusableObject>)obj;
-
+```objectivec
+- (void)enqueueReusableObject:(id <ReusableObject>)obj;
+```
 Dequeue an object, if any is available. Returns nil otherwise:
-
-    - (id <ReusableObject>)dequeueReusableObjectWithIdentifier:(NSString *)identifier;
-
+```objectivec
+- (id <ReusableObject>)dequeueReusableObjectWithIdentifier:(NSString *)identifier;
+```
 If necessary, call this method to clear the queue:
-
-    - (void)clearQueue;
-
+```objectivec
+- (void)clearQueue;
+```
 Protocol
 --------
 
 Make sure you use a custom subclass which conforms to the `ReusableObject` protocol. This method returns the reuse identifier, which you should set when the object gets initialized:
-
-    - (NSString *)reuseIdentifier;
-
+```objectivec
+- (NSString *)reuseIdentifier;
+```
 Usage
 -----
 
 This is an example on how to get a reusable object, in this case a CATransformLayer subclass:
-
-    - (CubeLayer *)pathView:(PathView *)pathView cubeForItemAtIndex:(NSUInteger)index
+```objectivec
+- (CubeLayer *)pathView:(PathView *)pathView cubeForItemAtIndex:(NSUInteger)index
+{
+    static NSString *kCubeIdentifier = @"cube_identifier";
+    	
+    /* Get an instance from an object by dequeueing an object with a reuse identifier from the queue, just like a UITableViewCell */
+    CubeLayer *cube = (CubeLayer *)[pathView.cubeQueue dequeueReusableObjectWithIdentifier:kCubeIdentifier];
+    /* If no object is available in the queue, it'll return nil. If it is nil, create a new instance */
+    if (cube == nil)
     {
-    	static NSString *kCubeIdentifier = @"cube_identifier";
-    	
-        /* Get an instance from an object by dequeueing an object with a reuse identifier from the queue, just like a UITableViewCell */
-    	CubeLayer *cube = (CubeLayer *)[pathView.cubeQueue dequeueReusableObjectWithIdentifier:kCubeIdentifier];
-        /* If no object is available in the queue, it'll return nil. If it is nil, create a new instance */
-    	if (cube == nil)
-    	{
-            /* It's best practice to use a custom designated initializer to store the reuse identifier */
-	        cube = [[CubeLayer alloc] initWithReuseIdentifier:kCubeIdentifier];
-    	}
-    	
-    	NSDictionary *dict = [_dataCollection objectAtIndex:index];
-    	
-    	CGFloat width = [[dict objectForKey:@"width"] floatValue];
-    	UIColor *color = [dict objectForKey:@"color"];
-    	
-    	cube.width = width;
-    	cube.color = color;
-    	
-    	return cube;
+        /* It's best practice to use a custom designated initializer to store the reuse identifier */
+		cube = [[CubeLayer alloc] initWithReuseIdentifier:kCubeIdentifier];
     }
-
+    	
+    NSDictionary *dict = [_dataCollection objectAtIndex:index];
+    	
+    CGFloat width = [[dict objectForKey:@"width"] floatValue];
+    UIColor *color = [dict objectForKey:@"color"];
+    	
+    cube.width = width;
+    cube.color = color;
+    	
+    return cube;
+}
+```
 When you're done with a certain object (e.g. a view element gets removed from the screen) you can enqueue the object this way:
-
-        UIView *view = [[UIView alloc] initWithFrame:...];
+```objectivec
+    UIView *view = [[UIView alloc] initWithFrame:...];
         
-        ...
+    ...
         
-        [view removeFromSuperview];
-        /* Done with the object, enqueue it for later use */
-        [_reusableQueue enqueueReusableObject:view];
-
+    [view removeFromSuperview];
+    /* Done with the object, enqueue it for later use */
+    [_reusableQueue enqueueReusableObject:view];
+```
 Make sure that the objects conform to the `ReusableObject` protocol:
-
-    @interface ViewSubclass : UIView <ReusableObject>  
-    {  
-        NSString *reuseIdentifier;  
-    }
-
+```objectivec
+@interface ViewSubclass : UIView <ReusableObject>  
+{  
+    NSString *reuseIdentifier;  
+}
+```
 In case you need to clear the queue manually you can call `-clearQueue`. However you should not call the method if you don't have to.
 
 License
