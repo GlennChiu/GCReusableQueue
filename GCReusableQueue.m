@@ -24,10 +24,21 @@
 #import "GCReusableQueue.h"
 #import <TargetConditionals.h>
 
+NSString *const GCNoReuseIdentifierKey = @"GCNoReuseIdentifierKey";
+
 @implementation GCReusableQueue
 {
     NSCache *_reusableObjects;
     id _observer;
+}
+
++ (instancetype)sharedInstance {
+    static GCReusableQueue *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[GCReusableQueue alloc] init];
+    });
+    return sharedInstance;
 }
 
 - (id)init
@@ -62,29 +73,74 @@
     return self->_reusableObjects ?: (self->_reusableObjects = [NSCache new]);
 }
 
-- (id <ReusableObject>)dequeueReusableObjectWithIdentifier:(NSString *)identifier
+- (id)dequeueReusableObjectOfClass:(Class)class withIdentifier:(NSString *)identifier
 {
-	NSParameterAssert(identifier);
+	NSParameterAssert(class);
 	
-	NSMutableSet *objects = [[self reusableObjects] objectForKey:identifier];
-	
-	id <ReusableObject> obj = [objects anyObject];
-	
-	if (obj) [objects removeObject:obj];
+    id obj = nil;
+    
+	NSDictionary *objectsByIdentifier = [[self reusableObjects] objectForKey:NSStringFromClass(class)];
+    
+    if (![identifier length]) {
+        if ([[objectsByIdentifier valueForKey:GCNoReuseIdentifierKey] count]) {
+            NSMutableSet *objects = [objectsByIdentifier valueForKey:GCNoReuseIdentifierKey];
+            obj = [objects anyObject];
+            if (obj) {
+                [objects removeObject:obj];
+            }
+        } else {
+            // Look for an object with any reuse identifier
+            for (NSString *identifier in objectsByIdentifier) {
+                NSMutableSet *objects = objectsByIdentifier[identifier];
+                obj = [objects anyObject];
+                
+                if (obj) {
+                    [objects removeObject:obj];
+                    break;
+                }
+            }
+        }
+    } else {
+        NSMutableSet *objects = [objectsByIdentifier valueForKey:identifier];
+        obj = [objects anyObject];
+        if (obj) {
+            [objects removeObject:obj];
+        }
+    }
+    
+    if (obj && [obj respondsToSelector:@selector(prepareForReuse)]) {
+        [obj prepareForReuse];
+    }
 	
 	return obj;
 }
 
-- (void)enqueueReusableObject:(id <ReusableObject>)obj
+- (void)enqueueReusableObject:(id)obj
 {
-	NSMutableSet *objects = [[self reusableObjects] objectForKey:[obj reuseIdentifier]];
-	
-	if (!objects)
-	{
-		objects = [NSMutableSet set];
-		[[self reusableObjects] setObject:objects forKey:[obj reuseIdentifier]];
-	}
-	
+    [self enqueueReusableObject:obj withReuseIdentifier:nil];
+}
+
+- (void)enqueueReusableObject:(id)obj withReuseIdentifier:(NSString *)reuseIdentifier {
+    NSMutableDictionary *objectsByReuseIdentifier = [[self reusableObjects] objectForKey:NSStringFromClass([obj class])];
+    
+    if (!objectsByReuseIdentifier) {
+        objectsByReuseIdentifier = [NSMutableDictionary new];
+        [[self reusableObjects] setObject:objectsByReuseIdentifier forKey:NSStringFromClass([obj class])];
+    }
+    
+    if (![reuseIdentifier length] && [obj respondsToSelector:@selector(reuseIdentifier)]) {
+        reuseIdentifier = [obj valueForKey:NSStringFromSelector(@selector(reuseIdentifier))];
+    }
+    if (![reuseIdentifier length]) {
+        reuseIdentifier = GCNoReuseIdentifierKey;
+    }
+    
+    NSMutableSet *objects = [objectsByReuseIdentifier objectForKey:reuseIdentifier];
+    if (!objects) {
+        objects = [NSMutableSet set];
+        [objectsByReuseIdentifier setObject:objects forKey:reuseIdentifier];
+    }
+    
     [objects addObject:obj];
 }
 
