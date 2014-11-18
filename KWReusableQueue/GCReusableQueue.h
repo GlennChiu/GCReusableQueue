@@ -24,16 +24,29 @@
 #import <Foundation/Foundation.h>
 
 /* Make sure that objects conform to this protocol and return -reuseIdentifier. */
-@protocol ReusableObject <NSObject>
+@protocol GCReusableObject <NSObject>
 
 - (NSString *)reuseIdentifier;
+
+@optional
+- (void)prepareForReuse;
 
 @end
 
 @interface GCReusableQueue : NSObject
 
-- (void)enqueueReusableObject:(id <ReusableObject>)obj;
-- (id <ReusableObject>)dequeueReusableObjectWithIdentifier:(NSString *)identifier;
++ (instancetype)sharedInstance;
+
+- (void)enqueueReusableObject:(id)obj;
+
+- (void)enqueueReusableObject:(id)obj withReuseIdentifier:(NSString *)reuseIdentifier;
+
+/* If no identifier is specified, the pool will try to return a queued object of the same class
+ * with no reuse identifier. If none exists, it will return one of the same class with any reuse
+ * identifier. If a reuse identifier is explicitely specified here, this will only return an object
+ * bearing it, or nil if none exists.
+ */
+- (id)dequeueReusableObjectOfClass:(Class)class withIdentifier:(NSString *)identifier;
 
 /* This method should not be used, as the queue will discard objects automatically
    when memory gets tight. Use this method to discard objects manually. */
