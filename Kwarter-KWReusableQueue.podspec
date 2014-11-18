@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/kwarter/KWReusableQueue'
   s.authors  = 'Glenn Chiu'
   s.source   = { :git => 'https://github.com/kwarter/KWReusableQueue.git', :tag => '1.0' }
-  s.source_files = ''
+  s.source_files = 'KWReusableQueue/'
   s.requires_arc = true
   s.ios.deployment_target = '4.3'
   s.osx.deployment_target = '10.6'
